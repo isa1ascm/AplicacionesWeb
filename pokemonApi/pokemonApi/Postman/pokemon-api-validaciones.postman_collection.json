@@ -1,0 +1,209 @@
+{
+  "info": {
+    "name": "Pokemon API - Validaciones",
+    "description": "Colección para probar validaciones, errores 400/404 y creación correcta de Pokémon.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "GET Todos los Pokémon",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/pokemones",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "pokemones"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "POST Pokémon inválido - URL mala",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nombre\": \"Pikachu\",\n  \"tipo\": \"Electrico\",\n  \"nivel\": 25,\n  \"ataque\": 55,\n  \"defensa\": 40,\n  \"descripcion\": \"Pokemon electrico\",\n  \"imagenUrl\": \"not-a-url\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/pokemones",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "pokemones"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "POST Pokémon inválido - nivel 150",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nombre\": \"Bulbasaur\",\n  \"tipo\": \"Planta\",\n  \"nivel\": 150,\n  \"ataque\": 60,\n  \"defensa\": 50,\n  \"descripcion\": \"Pokémon de tipo planta\",\n  \"imagenUrl\": \"https://imagen.com/bulbasaur.png\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/pokemones",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "pokemones"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "POST Pokémon válido",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nombre\": \"Charmander\",\n  \"tipo\": \"Fuego\",\n  \"nivel\": 20,\n  \"ataque\": 70,\n  \"defensa\": 45,\n  \"descripcion\": \"Pokemon de fuego\",\n  \"imagenUrl\": \"https://images.example.com/charmander.png\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/pokemones",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "pokemones"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "GET Pokémon inexistente 9999",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/pokemones/9999",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "pokemones",
+            "9999"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "PUT Pokémon existente - actualización completa",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nombre\": \"Charmander\",\n  \"tipo\": \"Fuego\",\n  \"nivel\": 30,\n  \"ataque\": 80,\n  \"defensa\": 60,\n  \"descripcion\": \"Charmander actualizado\",\n  \"imagenUrl\": \"https://images.example.com/charmander-updated.png\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/pokemones/1",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "pokemones",
+            "1"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "PATCH Pokémon existente - actualización parcial",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nivel\": 35\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/pokemones/1",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "pokemones",
+            "1"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "DELETE Pokémon existente",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/pokemones/1",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "pokemones",
+            "1"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}

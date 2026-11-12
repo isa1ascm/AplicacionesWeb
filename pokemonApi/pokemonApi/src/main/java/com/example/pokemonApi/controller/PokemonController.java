@@ -2,6 +2,7 @@ package com.example.pokemonApi.controller;
 
 import com.example.pokemonApi.model.Pokemon;
 import com.example.pokemonApi.service.PokemonService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -37,21 +38,21 @@ public class PokemonController {
     }
 
     @PostMapping
-    public Pokemon crearPokemon(@RequestBody Pokemon pokemon) {
+    public Pokemon crearPokemon(@Valid @RequestBody Pokemon pokemon) {
         return pokemonService.crearPokemon(pokemon);
     }
 
     @PutMapping("/{id}")
     public Pokemon actualizarPokemonCompleto(
             @PathVariable Long id,
-            @RequestBody Pokemon pokemon) {
+            @Valid @RequestBody Pokemon pokemon) {
         return pokemonService.actualizarPokemonCompleto(id, pokemon);
     }
 
     @PatchMapping("/{id}")
     public Pokemon actualizarPokemonParcial(
             @PathVariable Long id,
-            @RequestBody Pokemon pokemon) {
+            @Valid @RequestBody Pokemon pokemon) {
         return pokemonService.actualizarPokemonParcial(id, pokemon);
     }
 
